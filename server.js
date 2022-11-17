@@ -26,6 +26,9 @@ db.on("disconnected", () => console.log("mongo disconnected"));
 // Mount Middleware
 
 app.use(cors());
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
+
 // Controller Middleware
 
 // Route(s)
