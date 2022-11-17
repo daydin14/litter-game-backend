@@ -48,7 +48,9 @@ app.use("/sessions", sessionController);
 // Route(s)
 
 app.get("/", (req, res) => {
-    res.render("index.ejs");
+    res.render("index.ejs", {
+        currentUser: req.session.currentUser
+    });
 });
 
 // Express App Listener
