@@ -13,6 +13,7 @@ const app = express();  // Initialize Express App
 // Initialized Controllers
 
 const userController = require("./controllers/users");
+const sessionController = require("./controllers/sessions");
 
 // Mongo Database Configuration
 
@@ -42,6 +43,7 @@ app.use(methodOverride("_method"));
 // Controller Middleware
 
 app.use("/users", userController);
+app.use("/sessions", sessionController);
 
 // Route(s)
 
