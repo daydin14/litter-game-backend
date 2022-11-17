@@ -47,6 +47,10 @@ app.use("/sessions", sessionController);
 
 // Route(s)
 
+app.get("/", (req, res) => {
+    res.render("index.ejs");
+});
+
 // Express App Listener
 
 app.listen(PORT, () => console.log(`express is listening on port : ${PORT}`));

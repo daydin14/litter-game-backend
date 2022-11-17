@@ -7,6 +7,10 @@ const User = require("../models/user");
 
 // New (Login Page)
 
+sessionsRouter.get("/new", (req, res) => {
+    res.render("sessions/new.ejs");
+});
+
 // Delete (Logout Route)
 
 sessionsRouter.delete("/", (req, res) => {

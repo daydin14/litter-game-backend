@@ -7,6 +7,10 @@ const User = require("../models/user");
 
 // New (Registration Page)
 
+userRouter.get("/new", (req, res) => {
+    res.render("users/new.ejs");
+});
+
 // Create (Registration Route)
 
 userRouter.post("/", (req, res) => {
