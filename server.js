@@ -9,6 +9,10 @@ const methodOverride = require("method-override");
 const {PORT, DATABASE_URL} = process.env;  // Configures Active PORT App is Running On
 const app = express();  // Initialize Express App
 
+// Initialized Controllers
+
+const userController = require("./controllers/users");
+
 // Mongo Database Configuration
 
 mongoose.connect(DATABASE_URL, {
@@ -26,10 +30,12 @@ db.on("disconnected", () => console.log("mongo disconnected"));
 // Mount Middleware
 
 app.use(cors());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));    // Body-Parser
 app.use(methodOverride("_method"));
 
 // Controller Middleware
+
+app.use("/users", userController);
 
 // Route(s)
 
