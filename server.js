@@ -1,26 +1,33 @@
-// Dependencies
+// Initialized Dependencies
 
-require("dotenv").config()
+require("dotenv").config()  // Hidden App Configuration Settings
 const express = require("express");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
-const PORT = process.env.PORT;
-const app = express();
 
-// Database Configuration
+const {PORT, DATABASE_URL} = process.env;  // Configures Active PORT App is Running On
+const app = express();  // Initialize Express App
 
-mongoose.connect(process.env.DATABASE_URL, {
+// Mongo Database Configuration
+
+mongoose.connect(DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
 const db = mongoose.connection;
 
-// Database Connection Error / Success
+// Database Connection Error / Success (MONGO Status Listeners)
 
 db.on("error", (err) => console.log(err.message + "is mongod not running?"));
 db.on("connected", () => console.log("mongo connected"));
 db.on("disconnected", () => console.log("mongo disconnected"));
 
-// App Listener
+// Mount Middleware
+
+// Controller Middleware
+
+// Route(s)
+
+// Express App Listener
 
 app.listen(PORT, () => console.log(`express is listening on port : ${PORT}`));
