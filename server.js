@@ -4,6 +4,7 @@ require("dotenv").config()  // Hidden App Configuration Settings
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const session = require("express-session");
 const methodOverride = require("method-override");
 
 const {PORT, DATABASE_URL} = process.env;  // Configures Active PORT App is Running On
@@ -31,6 +32,11 @@ db.on("disconnected", () => console.log("mongo disconnected"));
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));    // Body-Parser
+app.use(session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false
+}))
 app.use(methodOverride("_method"));
 
 // Controller Middleware
