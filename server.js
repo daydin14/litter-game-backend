@@ -3,6 +3,7 @@
 require("dotenv").config()  // Hidden App Configuration Settings
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const methodOverride = require("method-override");
 
 const {PORT, DATABASE_URL} = process.env;  // Configures Active PORT App is Running On
@@ -24,6 +25,7 @@ db.on("disconnected", () => console.log("mongo disconnected"));
 
 // Mount Middleware
 
+app.use(cors());
 // Controller Middleware
 
 // Route(s)
